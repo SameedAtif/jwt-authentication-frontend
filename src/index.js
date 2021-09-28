@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Container from 'react-bootstrap/Container'
+import SignupForm from './components/SignupForm';
 import reportWebVitals from './reportWebVitals';
+
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Container >
+      <SignupForm />
+    </Container>
   </React.StrictMode>,
   document.getElementById('root')
 );
