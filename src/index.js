@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container'
-import SignupForm from './components/SignupForm';
+import SignupForm from './components/signUp/SignupForm';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';

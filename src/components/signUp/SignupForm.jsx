@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import TextField from './TextField';
+import TextField from '../elements/TextField';
 
 const SignupForm = () => {
   return (
