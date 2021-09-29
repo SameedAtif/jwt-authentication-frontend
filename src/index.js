@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container'
-import SignupForm from './components/signUp/SignupForm';
+import Signin from './components/signUp/Signin';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
@@ -9,7 +9,7 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <Container >
-      <SignupForm />
+      <Signin />
     </Container>
   </React.StrictMode>,
   document.getElementById('root')

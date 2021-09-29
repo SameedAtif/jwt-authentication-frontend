@@ -1,11 +1,11 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import TextField from '../elements/TextField';
 
-const SignupForm = () => {
+const SigninForm = () => {
   return (
     <Formik
       initialValues={{ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
@@ -27,16 +27,6 @@ const SignupForm = () => {
     >
       <Form>
         <TextField
-          label="First Name"
-          name="firstName"
-          type="text"
-        />
-        <TextField
-          label="Last Name"
-          name="lastName"
-          type="text"
-        />
-        <TextField
           label="Email"
           name="email"
           type="text"
@@ -46,15 +36,10 @@ const SignupForm = () => {
           name="password"
           type="password"
         />
-        <TextField
-          label="Confirm password"
-          name="confirmPassword"
-          type="confirmPassword"
-        />
         <Button type="submit">Submit</Button>
       </Form>
     </Formik>
   );
 };
 
-export default SignupForm;
+export default SigninForm;
