@@ -1,16 +1,18 @@
 import React from 'react';
+import { Provider } from 'react';
 import ReactDOM from 'react-dom';
-import Container from 'react-bootstrap/Container'
-import Signin from './components/signUp/Signin';
 import reportWebVitals from './reportWebVitals';
+
+import store from './store';
+import App from './App';
 
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Container >
-      <Signin />
-    </Container>
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
