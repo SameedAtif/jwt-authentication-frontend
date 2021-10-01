@@ -8,7 +8,7 @@ export const SignInUserLoading = createAction(constants.SIGN_IN_USER_LOADING)
 export const SignInUserSuccess = createAction(constants.SIGN_IN_USER_SUCCESSFUL)
 export const SignInUserFailure = createAction(constants.SIGN_IN_USER_FAILURE)
 
-export const SignOutUserLoading = createAction(constants.SIGN_OUT_USER_SUCCESS)
+export const SignOutUserSuccess = createAction(constants.SIGN_OUT_USER_SUCCESS)
 
 export const signInUser = (payload) => {
   return async (dispatch) => {
@@ -19,6 +19,15 @@ export const signInUser = (payload) => {
       userActions.getUser(res);
     }).catch((err) => {
       dispatch(SignInUserFailure);
+    })
+  }
+}
+
+export const signOutUser = (payload) => {
+  return async (dispatch) => {
+    return authService.signOutUser(payload).then((res) => {      
+      dispatch(SignOutUserSuccess);
+      userActions.getUser(res);
     })
   }
 }
