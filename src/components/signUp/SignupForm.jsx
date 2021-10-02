@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
-import {Form, Button} from 'react-bootstrap'
-import { Formik } from 'formik';
+import { Button} from 'react-bootstrap'
+import { Formik, Form } from 'formik';
 
 import { createUser } from '../../actions/userActions';
 import TextField from '../elements/TextField';
@@ -23,7 +23,11 @@ const SignupForm = ({ handleSignUpUser }) => {
         email: Yup.string().email('Invalid email address').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        handleSignUpUser(values);
+        handleSignUpUser({
+          first_name: values.firstName, last_name: values.lastName,
+          email: values.email, password: values.password,
+          password_confirmation: values.confirmPassword
+        });
         setSubmitting(false);
       }}
     >

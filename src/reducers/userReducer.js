@@ -34,6 +34,22 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: {}
       }
+    case constatns.CREATE_USER_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case constatns.CREATE_USER_SUCCESSFUL:
+      return {
+        ...state,
+        user: action.payload
+      };
+    case constatns.CREATE_USER_FAILURE:
+      return {
+        ...state,
+        user: {}
+      }
+    
     default:
       return state;
   }

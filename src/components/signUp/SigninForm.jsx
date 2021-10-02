@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
-import { Form, Button } from 'react-bootstrap';
-import { Formik } from 'formik';
+import { Button } from 'react-bootstrap';
+import { Formik, Form } from 'formik';
 
 import { signInUser } from '../../actions/authActions';
 

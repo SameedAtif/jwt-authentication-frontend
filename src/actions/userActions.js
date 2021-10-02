@@ -17,7 +17,7 @@ export const CreateUserSuccess = createAction(constants.CREATE_USER_SUCCESSFUL)
 export const CreateUserFailure = createAction(constants.CREATE_USER_FAILURE)
 
 export const getUser = (payload) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(GetUserLoading);
     return userService.getUser(payload).then((res) => {
       dispatch(GetUserSuccess(res.data))
@@ -26,7 +26,7 @@ export const getUser = (payload) => {
 }
 
 export const updateUser = (payload) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(UpdateUserLoading);
     return userService.updateUser(payload).then((res) => {
       dispatch(UpdateUserSuccess(res.data))
@@ -35,11 +35,13 @@ export const updateUser = (payload) => {
 }
 
 export const createUser = (payload) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(CreateUserLoading);
     return userService.createUser(payload).then((res) => {
       dispatch(CreateUserSuccess(res.data));
       signInUser({ email: res.data.email, password: res.data.password });
-    }).catch(() => dispatch(CreateUserFailure))
+    }).catch(() => {
+      dispatch(CreateUserFailure)
+    })
   }
 }

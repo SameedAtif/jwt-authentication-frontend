@@ -1,13 +1,15 @@
-import baseService from './baseService'
+import axios from 'axios'
+const BASE_URL = 'http://localhost:3000/api/v1'
 
-export const signInUser = payload => (
-  baseService.post('/session', payload)
-)
+export const signInUser = payload => {
+  debugger
+  return axios.post(`${BASE_URL}/session`, payload)
+}
 
 export const signOutUser = payload => (
-  baseService.delete('/session', payload)
+  axios.delete(`${BASE_URL}/session`, payload)
 )
 
 export const createUser = payload => (
-  baseService.patch('/session', payload)
+  axios.patch(`${BASE_URL}/session`, payload)
 )
