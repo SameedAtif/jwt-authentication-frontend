@@ -9,7 +9,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
-    case constatns.GET_USER_SUCCESS:
+    case constatns.GET_USER_SUCCESSFUL:
       return {
         ...state,
         user: action.payload
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
-    case constatns.UPDATE_USER_SUCCESS:
+    case constatns.UPDATE_USER_SUCCESSFUL:
       return {
         ...state,
         user: action.payload

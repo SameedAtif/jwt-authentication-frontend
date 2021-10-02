@@ -1,4 +1,4 @@
-import * as baseService from './baseService'
+import baseService from './baseService'
 
 export const getUser = payload => (
   baseService.get(`/user/${payload}`)

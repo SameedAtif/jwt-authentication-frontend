@@ -1,4 +1,4 @@
-import * as constatns from '../constants/userConstants';
+import * as constatns from '../constants/authConstants';
 
 const initialState = { user: null, loading: false }
 
@@ -19,7 +19,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: null
       }
-    case constatns.SIGN_OU_USER_SUCCESSFUL:
+    case constatns.SIGN_OUT_USER_SUCCESSFUL:
       return {
         ...state,
         user: null,

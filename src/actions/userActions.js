@@ -1,4 +1,4 @@
-import { createAction } from 'react-redux'
+import { createAction } from 'redux-actions';
 
 import * as constants from '../constants/userConstants'
 import * as userService from '../services/userService'

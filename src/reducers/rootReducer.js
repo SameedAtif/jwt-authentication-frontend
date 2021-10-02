@@ -3,18 +3,18 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import userReducer from "./userReducer";
 
-import { SIGN_OUT_USER_SUCCESSFUL } from "../constants/authConstatns";
+import { SIGN_OUT_USER_SUCCESSFUL } from "../constants/authConstants";
 
 const appReducer = combineReducers({
   authReducer,
   userReducer
 });
 
-const baseReducer = (state, action) => {
+const rootReducer = (state, action) => {
   if (action.type === SIGN_OUT_USER_SUCCESSFUL) {
     window.location.href = '/';
   }
   return appReducer(state, action)
 }
 
-export default baseReducer
+export default rootReducer

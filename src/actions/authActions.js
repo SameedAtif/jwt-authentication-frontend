@@ -1,4 +1,4 @@
-import { createAction } from 'react-redux'
+import { createAction } from 'redux-actions'
 
 import * as constants from '../constants/authConstants'
 import * as userActions from './userActions'
@@ -8,7 +8,7 @@ export const SignInUserLoading = createAction(constants.SIGN_IN_USER_LOADING)
 export const SignInUserSuccess = createAction(constants.SIGN_IN_USER_SUCCESSFUL)
 export const SignInUserFailure = createAction(constants.SIGN_IN_USER_FAILURE)
 
-export const SignOutUserSuccess = createAction(constants.SIGN_OUT_USER_SUCCESS)
+export const SignOutUserSuccess = createAction(constants.SIGN_OUT_USER_SUCCESSFUL)
 
 export const signInUser = (payload) => {
   return async (dispatch) => {
