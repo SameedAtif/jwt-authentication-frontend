@@ -51,7 +51,7 @@ const SignupForm = ({ handleSignUpUser }) => {
         <TextField
           label="Confirm password"
           name="confirmPassword"
-          type="confirmPassword"
+          type="password"
         />
         <Button type="submit">Submit</Button>
       </Form>
