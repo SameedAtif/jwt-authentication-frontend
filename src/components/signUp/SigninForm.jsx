@@ -1,11 +1,18 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap'
-import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import * as Yup from 'yup';
+
+import { Form, Button } from 'react-bootstrap';
+import { Formik } from 'formik';
+
+import { signInUser } from '../../actions/authActions';
 
 import TextField from '../elements/TextField';
 
-const SigninForm = () => {
+const SigninForm = (
+  { handleSignInUser }
+) => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -14,10 +21,8 @@ const SigninForm = () => {
         password: Yup.string()
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        handleSignInUser(values);
+        setSubmitting(false);
       }}
     >
       <Form>
@@ -37,4 +42,14 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+const mapDispatchToProps = dispatch => ({
+  handleSignInUser: (payload) => {
+    dispatch(signInUser(payload));
+  }
+})
+
+SigninForm.propTypes = {
+  handleSignInUser: PropTypes.func.isRequired
+}
+
+export default connect(null, mapDispatchToProps)(SigninForm);

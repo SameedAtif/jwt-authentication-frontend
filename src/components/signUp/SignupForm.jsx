@@ -1,11 +1,15 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap'
-import { Formik } from 'formik';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
+import {Form, Button} from 'react-bootstrap'
+import { Formik } from 'formik';
+
+import { createUser } from '../../actions/userActions';
 import TextField from '../elements/TextField';
 
-const SignupForm = () => {
+const SignupForm = ({ handleSignUpUser }) => {
   return (
     <Formik
       initialValues={{ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
@@ -19,10 +23,8 @@ const SignupForm = () => {
         email: Yup.string().email('Invalid email address').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        handleSignUpUser(values);
+        setSubmitting(false);
       }}
     >
       <Form>
@@ -57,4 +59,14 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+const mapDispatchToProps = dispatch => ({
+  handleSignUpUser: (payload) => {
+    dispatch(createUser(payload))
+  }
+})
+
+SignupForm.propTypes = {
+  handleSignUpUser: PropTypes.func.isRequired
+}
+
+export default connect(null, mapDispatchToProps)(SignupForm);

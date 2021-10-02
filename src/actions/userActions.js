@@ -2,6 +2,7 @@ import { createAction } from 'react-redux'
 
 import * as constants from '../constants/userConstants'
 import * as userService from '../services/userService'
+import { signInUser } from './authActions'
 
 export const GetUserLoading = createAction(constants.GET_USER_LOADING)
 export const GetUserSuccess = createAction(constants.GET_USER_SUCCESSFUL)
@@ -38,7 +39,7 @@ export const createUser = (payload) => {
     dispatch(CreateUserLoading);
     return userService.createUser(payload).then((res) => {
       dispatch(CreateUserSuccess(res.data));
-      getUser(res.data.id);
+      signInUser({ email: res.data.email, password: res.data.password });
     }).catch(() => dispatch(CreateUserFailure))
   }
 }
