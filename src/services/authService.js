@@ -8,7 +8,3 @@ export const signInUser = payload => {
 export const signOutUser = payload => (
   axios.delete(`${BASE_URL}/session`, payload)
 )
-
-export const createUser = payload => (
-  axios.patch(`${BASE_URL}/session`, payload)
-)

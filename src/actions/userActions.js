@@ -39,7 +39,7 @@ export const createUser = (payload) => {
     dispatch(CreateUserLoading);
     return userService.createUser(payload).then((res) => {
       dispatch(CreateUserSuccess(res.data));
-      signInUser({ email: res.data.email, password: res.data.password });
+      dispatch(signInUser({ email: payload.email, password: payload.password }));
     }).catch(() => {
       dispatch(CreateUserFailure)
     })
