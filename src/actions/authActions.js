@@ -15,7 +15,7 @@ export const signInUser = (payload) => {
     dispatch(SignInUserLoading);
 
     return authService.signInUser(payload).then((res) => {
-      dispatch(SignInUserSuccess(res.data.id));
+      dispatch(SignInUserSuccess(res.data.body.user_id));
       userActions.getUser(res);
     }).catch((err) => {
       dispatch(SignInUserFailure);

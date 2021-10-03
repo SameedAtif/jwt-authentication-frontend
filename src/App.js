@@ -1,13 +1,21 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-import Signin from './components/signUp/Signin';
+import Home from './containers/Home';
 
 const App = () => {
   return (
-    <Container >
-      <Signin />
-    </Container>
+    <Router>
+      <Switch>
+        <Route exact path = '/'>
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
