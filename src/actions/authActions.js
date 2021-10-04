@@ -16,7 +16,8 @@ export const signInUser = (payload) => {
 
     return authService.signInUser(payload).then((res) => {
       dispatch(SignInUserSuccess(res.data.body.user_id));
-      userActions.getUser(res);
+      localStorage.setItem('user_id', res.data.body.user_id);
+      dispatch(userActions.getUser(res.data.body.user_id));
     }).catch((err) => {
       dispatch(SignInUserFailure);
     })
@@ -27,7 +28,7 @@ export const signOutUser = (payload) => {
   return (dispatch) => {
     return authService.signOutUser(payload).then((res) => {      
       dispatch(SignOutUserSuccess);
-      userActions.getUser(res);
+      localStorage.removeItem('user_id');
     })
   }
 }

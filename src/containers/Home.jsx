@@ -7,7 +7,7 @@ import Signin from '../components/signUp/Signin';
 const Home = ({user}) => {
   return (
     <Container >
-      {user ? <p>Greetings!</p> : <Signin />}
+      {localStorage.getItem('user_id') ? <p>Greetings!</p> : <Signin />}
     </Container>
   )
 }

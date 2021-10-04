@@ -1,4 +1,18 @@
 import axios from "axios";
+import { createAction } from "redux-actions";
+
+import { SIGN_OUT_USER_SUCCESSFUL } from "../constants/authConstants";
+import store from '../store';
+
+const SignOutUserSuccess = createAction(SIGN_OUT_USER_SUCCESSFUL);
+const forbiddenStatuses = [401, 423, 409, 406];
+
+const sessionExpired = (err) => {
+  if (err.response && forbiddenStatuses.includes(err.response.status)) {
+    store.dispatch(SignOutUserSuccess());
+    localStorage.removeItem('user_id');
+  }
+}
 
 const baseService = () => {
   const defaultOptions = {
@@ -18,10 +32,13 @@ const baseService = () => {
 
   instance.interceptors.response.use(
     (response) => response,
-    (error) => Promise.reject(error)
+    (error) => {
+      sessionExpired(error);
+      Promise.reject(error);
+    }
   );
 
   return instance;
 }
 
-export default baseService;
+export default baseService();

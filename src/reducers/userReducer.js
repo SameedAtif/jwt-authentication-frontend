@@ -1,50 +1,50 @@
-import * as constatns from '../constants/userConstants';
+import * as constants from '../constants/userConstants';
 
 const initialState = { user: {}, loading: false }
 
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
-    case constatns.GET_USER_LOADING:
+    case constants.GET_USER_LOADING:
       return {
         ...state,
         loading: true
       };
-    case constatns.GET_USER_SUCCESSFUL:
+    case constants.GET_USER_SUCCESSFUL:
       return {
         ...state,
         user: action.payload
       };
-    case constatns.GET_USER_FAILURE:
+    case constants.GET_USER_FAILURE:
       return {
         ...state,
         user: {}
       }
-    case constatns.UPDATE_USER_LOADING:
+    case constants.UPDATE_USER_LOADING:
       return {
         ...state,
         loading: true
       };
-    case constatns.UPDATE_USER_SUCCESSFUL:
+    case constants.UPDATE_USER_SUCCESSFUL:
       return {
         ...state,
         user: action.payload
       };
-    case constatns.UPDATE_USER_FAILURE:
+    case constants.UPDATE_USER_FAILURE:
       return {
         ...state,
         user: {}
       }
-    case constatns.CREATE_USER_LOADING:
+    case constants.CREATE_USER_LOADING:
       return {
         ...state,
         loading: true
       };
-    case constatns.CREATE_USER_SUCCESSFUL:
+    case constants.CREATE_USER_SUCCESSFUL:
       return {
         ...state,
         user: action.payload
       };
-    case constatns.CREATE_USER_FAILURE:
+    case constants.CREATE_USER_FAILURE:
       return {
         ...state,
         user: {}
