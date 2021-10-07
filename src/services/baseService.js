@@ -1,44 +1,47 @@
-import axios from "axios";
-import { createAction } from "redux-actions";
+import axios from 'axios';
+import { createAction } from 'redux-actions';
 
-import { SIGN_OUT_USER_SUCCESSFUL } from "../constants/authConstants";
-import store from '../store';
+import store from '../store.js';
+import { SIGN_OUT_USER_SUCCESSFUL } from '../constants/authConstants';
 
-const SignOutUserSuccess = createAction(SIGN_OUT_USER_SUCCESSFUL);
 const forbiddenStatuses = [401, 423, 409, 406];
 
-const sessionExpired = (err) => {
-  if (err.response && forbiddenStatuses.includes(err.response.status)) {
-    store.dispatch(SignOutUserSuccess());
-    localStorage.removeItem('user_id');
+export const SignOutSuccess = createAction(SIGN_OUT_USER_SUCCESSFUL);
+
+
+const checkIfSessionExpired = (err) => {
+  if (err.response && forbiddenStatuses.includes(err.response.status) && err.response.config.url !== apis.session) {
+    store.dispatch(SignOutSuccess());
   }
-}
+};
 
 const baseService = () => {
   const defaultOptions = {
     baseUrl: `http://localhost:3000/api/v1`,
     headers: {
-      'Content-Type': 'application/json'
-    }
-  }
+      'Content-Type': 'application/json',
+    },
+  };
+
   const instance = axios.create(defaultOptions);
 
   instance.interceptors.request.use((config) => {
     config.withCredentials = true;
     return config;
-  }, (error) => {
-    Promise.reject(error)
+  },
+  (error) => {
+    Promise.reject(error);
   });
 
   instance.interceptors.response.use(
     (response) => response,
-    (error) => {
-      sessionExpired(error);
-      Promise.reject(error);
-    }
+    (err) => {
+      checkIfSessionExpired(err);
+      return Promise.reject(err);
+    },
   );
 
   return instance;
-}
+};
 
 export default baseService();
