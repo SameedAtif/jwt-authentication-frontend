@@ -10,14 +10,14 @@ export const SignOutSuccess = createAction(SIGN_OUT_USER_SUCCESSFUL);
 
 
 const checkIfSessionExpired = (err) => {
-  if (err.response && forbiddenStatuses.includes(err.response.status) && err.response.config.url !== apis.session) {
+  if (err.response && forbiddenStatuses.includes(err.response.status)) {
     store.dispatch(SignOutSuccess());
   }
 };
 
 const baseService = () => {
   const defaultOptions = {
-    baseUrl: `http://localhost:3000/api/v1`,
+    baseURL: `http://localhost:3000/api/v1`,
     headers: {
       'Content-Type': 'application/json',
     },
