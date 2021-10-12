@@ -17,7 +17,8 @@ const checkIfSessionExpired = (err) => {
 
 const baseService = () => {
   const defaultOptions = {
-    baseURL: `http://localhost:3000/api/v1`,
+    withCredentials: true,
+    baseURL: `https://localhost:4000/api/v1`,
     headers: {
       'Content-Type': 'application/json',
     },
