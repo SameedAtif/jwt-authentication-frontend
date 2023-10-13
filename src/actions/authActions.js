@@ -24,11 +24,12 @@ export const signInUser = (payload) => {
   }
 }
 
-export const signOutUser = (payload) => {
+export const signOutUser = () => {
   return (dispatch) => {
-    return authService.signOutUser(payload).then((res) => {      
+    return authService.signOutUser().then((res) => {
       dispatch(SignOutUserSuccess);
       localStorage.removeItem('user_id');
+      window.location.reload()
     })
   }
 }

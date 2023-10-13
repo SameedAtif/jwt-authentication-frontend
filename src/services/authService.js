@@ -4,6 +4,6 @@ export const signInUser = payload => {
   return baseService.post("/session", payload)
 }
 
-export const signOutUser = payload => (
-  baseService.delete("/session", payload)
+export const signOutUser = () => (
+  baseService.delete("/session")
 )
